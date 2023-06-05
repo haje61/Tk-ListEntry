@@ -19,12 +19,8 @@ Construct Tk::Widget 'ListEntry';
 
 =head1 SYNOPSIS
 
-=over 4
-
  require Tk::ListEntry;
  my $tree= $window->ListEntry(@options)->pack;
-
-=back
 
 =head1 DESCRIPTION
 
@@ -47,10 +43,7 @@ See L<Tk::Poplevel>.
 
 =item Switch: B<-values>
 
-You have to specify this option.
-Only available at create time.
-
-Specify a list of values for the popup list.
+See L<Tk::PopList>.
 
 =back
 
@@ -121,10 +114,9 @@ Returns a true if the value of the entry is in the values list.
 sub validate {
 	my $self = shift;
 	my $txt = $self->Subwidget('Entry')->get;
-	$txt = quotemeta($txt);
-	my $values = $self->{VALUES};
-	my ($match) = grep(/^$txt$/, @$values);
-	return defined $match;
+	my $values = $self->cget('-values');
+	return 1 if grep { $txt eq $_ } @$values;
+	return 0;
 }
 
 =back

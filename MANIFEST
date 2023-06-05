@@ -1,5 +1,7 @@
 Changes
+lib/Tk/ListEntry.pm
+LICENSE
 Makefile.PL
 MANIFEST
 README.md
-lib/Tk/ListEntry.pm
+t/Tk-ListEntry.t

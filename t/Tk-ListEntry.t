@@ -4,7 +4,7 @@ use warnings;
 use Test::Tk;
 use Tk;
 
-use Test::More tests => 4;
+use Test::More tests => 6;
 BEGIN { use_ok('Tk::ListEntry') };
 
 
@@ -18,7 +18,18 @@ if (defined $app) {
 	)->pack(-fill => 'x');
 }
 @tests = (
-	 [sub { return defined $le }, 1, 'Created ListEntry'],
+	[sub { return defined $le }, 1, 'Created ListEntry'],
+	[sub { 
+		$le->insert('end', 'Red');
+		my $val = $le->validate;
+		return $le->validate
+	}, 1, 'Red is in the list'],
+	[sub {
+		$le->delete(0, 'end');
+		$le->insert('end', 'Der');
+		my $val = $le->validate;
+		return $le->validate
+	}, 0, 'Der is not in the list'],
 );
 
 starttesting
