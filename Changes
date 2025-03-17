@@ -1,6 +1,9 @@
 Revision history for Perl extension Tk::ListEntry.
 
-0.04  Sun Mar 16 2025
+0.05  Mon Mar 17 2025
+	- Fixed bug created in last update (-nofocus was not set).
+
+0.04  Mon Mar 17 2025
 	- Added option -motionselect.
 	- Added escape binding to pop down the List.
 	- Fixed bug in method keyReturn.
